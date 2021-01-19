@@ -1,77 +1,59 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
+title: Hydrogen Fuel Cell Vehicle
+description: modelling, simulation and control of subsystems
+img: /assets/img/tata_whole.png
+importance: 5
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+*Tata Motors Research Centre Bangalore - Big thanks to <b>Mr. Anand Vasappanavara</b>*
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+The work involved modelling systems, simulating and designing controller
+for various sub-systems of a fuel cell vehicle. This work gave me an overview of the hydrogen fuel cell vehicle and its working in depth. A detailed analysis of all the work done is given [here](https://drive.google.com/file/d/1XRUzs_zOVsMAxC2frRLH15_kd77dZKQP/view).
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
+<div class="row text-center">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/1.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/3.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/tata_whole.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    General hydrogen fuel cell vehicle powertrain
 </div>
-<div class="row">
+
+### Performance Simulation
+This involved primarily performance simulation of the vehicle to set the parameters and formulate if the vehicle is meeting all the design criteria. Also, the fuel economy of the vehicle was simulated on a drive cycle provided by ARAI to see how much the vehicle will run once all the tanks are filled.
+
+<div class="row text-center">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/tata_perform_1.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    Performance simulation of vehicle
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
+### Thermal Simulation
+Thermal simulation for the cell stack was done to predict the temperature of the cell stack and controlling it via `PI` controller. The
+PI controller controlled the fan speed to change the rate of convection ultimately causing the change in temperature of the fuel cell. A part of
+hydrogen refuelling station was also simulated.
 
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/tata_thermal_1.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    PI control of fuel cell stack temperature
 </div>
 
+### Battery Design
+To solve the problem of SOC determination, a state space model of the battery was created to calculate the SOC and it incorporated the Extended Kalman Filter for the observer design.
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/" target="_blank">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/tata_bat_1.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
-```
+<div class="caption">
+    Part of battery model in simulink
+</div>

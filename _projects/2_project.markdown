@@ -1,77 +1,59 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image
-img: /assets/img/3.jpg
+title: learning MPC controller
+description: Using deep network to learn control for tracking
+img: /assets/img/mpc_intro.gif
 importance: 2
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+*Robotics Research Centre, IIIT Hyderabad*
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Investigate the use of deep networks for learning control to imitate the performance of MPC controller. The proposed network takes in the future desired states and the current state of the quadrotorto generate high level control commands of yaw rate, pitch, roll and thrust to do positional tracking. All the simulations were done in `ROS` using [RotorS](https://github.com/ethz-asl/rotors_simulator) simulator.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/1.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/3.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/deepmpc.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    The whole pipeline for imitating control.
 </div>
+
+### Data Collection
+
+The expert control commands are generated using [mav_control_rw](https://github.com/ethz-asl/mav_control_rw) package. These control commands serve as the ground truth for the imitation learning scheme while the ground truth pose as the input.
+
+<div class="row">
+    <div class="col-sm mt-1 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/mpc_data.gif' | relative_url }}" alt="" title="example image"/>
+    </div>
+</div>
+<div class="caption">
+    Various trajectories generated on ROS using RotorS simulator. The blue trajectories are the desired trajectories whereas the red ones represent the ground truth trajectories generated from the MPC controller.
+</div>
+
+### Network
+
+Various network structures (MLP and recurrent networks) were tested for comparing the results. Though the final output remain the same producing yaw rate, roll, pitch and thrust.
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/deep_net.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    Initial MLP network used for learning control
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
+### Results
+Generated high-level commands from the network are sent to the low-level PID control for controlling the drone.
 
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/deep_res.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+     Performance of the proposed deep network fortracking on unseen <em>sine</em> curve
 </div>
-
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/" target="_blank">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-```

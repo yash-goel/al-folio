@@ -2,8 +2,9 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: collection of my past projects
 nav: true
+pref: 1
 ---
 
 <div class="projects grid">

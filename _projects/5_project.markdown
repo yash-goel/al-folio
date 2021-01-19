@@ -1,77 +1,50 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: /assets/img/1.jpg
+title: RL based navigation
+description: bachelor thesis at IIT Roorkee
+img: /assets/img/quad_nav_intro.gif
 importance: 3
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+*with Akshay Walvekar and Anuj Jain*
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+The project aimed at navigation of a quadcopter in **AirSIM** where the control policy was learned using *DQN* algorithm with depth image as input to the policy. The quadcopter learned to navigate in an urban environment to reach the destination point. We trained the policy for two cases: **2D** and **3D** action space to compare the performance. A [paper](https://ieeexplore.ieee.org/document/9033244) summarising the work was published at `IEEE AUTEEE`.
 
-<div class="row">
+<div class="row text-center">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/1.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/3.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/quad_nav_rl.gif' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    Quadcopter training to navigate in AirSIM environment
 </div>
-<div class="row">
+
+### Network Architecture
+
+A CNN based network was used as our RL policy where the input to the network was *depth image* of the front view of the quadcopter. For the **2D** action space, there were three final outputs of the network - *straight*, *yaw left* and *yaw right*. While for the **3D** action space, there were six - *straight*, *yaw left*, *yaw right*, *move up*, *move down* and *pass(do nothing)*.
+
+<div class="row text-center">
     <div class="col-sm mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/5.jpg' | relative_url }}" alt="" title="example image"/>
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/quad_nav_net.jpg' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    Network Architecture
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, *bled* for your project, and then... you reveal it's glory in the next row of images.
+### Rewards
 
+The reward was set up such that the target position reaching for the drone is encouraged. While for collision, a reward of `-100` is given. For our destination a curb limit of *400* was set i.e. if the drone takes more than *400* steps to reach the goal then a reward of `-100` is given. Finally, reaching the goal before *400* steps, gives a reward of `+100`. Reward setting for both **2D** and **3D** cases have been discussed in the paper in depth.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
+### Results
+The quadcopter learned to navigate in **2D** and **3D** action space to reach the final destination position. The trained *DQN* policy was then tested in AirSIM. A detailed analysis of the results and training of the *RL* agent has been discussed in the paper.
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/final_avoid.png' | relative_url }}" alt="" title="example image"/>
     </div>
 </div>
 <div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+    Obstacle avoidance: (a) The house is in the way of the quadcopter so (b) it slows down and (c) starts initiating the turn to avoid the collision. (d) Finally, the turn is accomplished and (e) the quadcopter starts moving along the house (f) until it reaches the end where it will move back to its original direction.
 </div>
-
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/" target="_blank">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-```html
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/6.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        <img class="img-fluid rounded z-depth-1" src="{{ '/assets/img/11.jpg' | relative_url }}" alt="" title="example image"/>
-    </div>
-</div>
-```
