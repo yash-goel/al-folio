@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Yash  Goel | blank</title>
+<title>Yash  Goel | Bebop Navigation</title>
 <meta name="description" content="Exploring Robotics
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/3_project/">
 
 <!-- Theming-->
 
@@ -139,56 +139,41 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Bebop Navigation</h1>
+    <p class="post-description">collision cone based optimization for dynamic obstacles</p>
+  </header>
 
+  <article>
+    <p><em>Robotics Research Centre, IIIT Hyderabad</em></p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2018/12/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+<p>This project comprised of implementing dynamic obstacle avoidance on <code class="language-plaintext highlighter-rouge">Bebop</code> drone. The goal reaching was an optimization scheme with obstacle avoidance done using collision cone constraints. This was done for <em>holonomic</em> and <em>non-holonomic</em> setting in two different ways.</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<h3 id="holonomic-setting">Holonomic Setting</h3>
+<p>For this setting a new variant of velocity obstacle was implemented - <strong>Inverse Velocity Obstacle</strong> where we construct the collision cone in the ego-centric frame which showed improvement for real time implementation. We eliminate the need to know the robot position and velocity for obstacle avoidance - thus eliminating the associated noise. It was shown to work for multi-agent setting as well. This <a href="https://arxiv.org/pdf/1905.01438.pdf">work</a> was published at <code class="language-plaintext highlighter-rouge">AIR 2019</code>.</p>
 
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/ivo_gif.gif" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Real world implementation of <em>IVO</em> on bebop drone. 
+</div>
 
+<h3 id="non-holonomic-setting">Non-Holonomic Setting</h3>
+<p>In this the drone was constricted to move like a <code class="language-plaintext highlighter-rouge">fixed-wing</code> aircraft. To implement this, the optimised path was decomposed into <code class="language-plaintext highlighter-rouge">dubin paths</code>. This scheme was tested in real life. All the detailed video results are available <a href="https://youtu.be/0fk0RPp73UE">here</a></p>
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/dubins_vid.gif" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Simulation for multiple obstacle avoidance in <em>non-holonomic</em> setting.
+</div>
+
+  </article>
 
 </div>
 

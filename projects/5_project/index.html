@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Yash  Goel | blank</title>
+<title>Yash  Goel | RL based navigation</title>
 <meta name="description" content="Exploring Robotics
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/5_project/">
 
 <!-- Theming-->
 
@@ -139,56 +139,55 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">RL based navigation</h1>
+    <p class="post-description">bachelor thesis at IIT Roorkee</p>
+  </header>
 
+  <article>
+    <p><em>with Akshay Walvekar and Anuj Jain</em></p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2018/12/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+<p>The project aimed at navigation of a quadcopter in <strong>AirSIM</strong> where the control policy was learned using <em>DQN</em> algorithm with depth image as input to the policy. The quadcopter learned to navigate in an urban environment to reach the destination point. We trained the policy for two cases: <strong>2D</strong> and <strong>3D</strong> action space to compare the performance. A <a href="https://ieeexplore.ieee.org/document/9033244">paper</a> summarising the work was published at <code class="language-plaintext highlighter-rouge">IEEE AUTEEE</code>.</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/quad_nav_rl.gif" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Quadcopter training to navigate in AirSIM environment
+</div>
 
+<h3 id="network-architecture">Network Architecture</h3>
 
+<p>A CNN based network was used as our RL policy where the input to the network was <em>depth image</em> of the front view of the quadcopter. For the <strong>2D</strong> action space, there were three final outputs of the network - <em>straight</em>, <em>yaw left</em> and <em>yaw right</em>. While for the <strong>3D</strong> action space, there were six - <em>straight</em>, <em>yaw left</em>, <em>yaw right</em>, <em>move up</em>, <em>move down</em> and <em>pass(do nothing)</em>.</p>
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/quad_nav_net.jpg" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Network Architecture
+</div>
+
+<h3 id="rewards">Rewards</h3>
+
+<p>The reward was set up such that the target position reaching for the drone is encouraged. While for collision, a reward of <code class="language-plaintext highlighter-rouge">-100</code> is given. For our destination a curb limit of <em>400</em> was set i.e. if the drone takes more than <em>400</em> steps to reach the goal then a reward of <code class="language-plaintext highlighter-rouge">-100</code> is given. Finally, reaching the goal before <em>400</em> steps, gives a reward of <code class="language-plaintext highlighter-rouge">+100</code>. Reward setting for both <strong>2D</strong> and <strong>3D</strong> cases have been discussed in the paper in depth.</p>
+
+<h3 id="results">Results</h3>
+<p>The quadcopter learned to navigate in <strong>2D</strong> and <strong>3D</strong> action space to reach the final destination position. The trained <em>DQN</em> policy was then tested in AirSIM. A detailed analysis of the results and training of the <em>RL</em> agent has been discussed in the paper.</p>
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/final_avoid.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Obstacle avoidance: (a) The house is in the way of the quadcopter so (b) it slows down and (c) starts initiating the turn to avoid the collision. (d) Finally, the turn is accomplished and (e) the quadcopter starts moving along the house (f) until it reaches the end where it will move back to its original direction.
+</div>
+
+  </article>
 
 </div>
 

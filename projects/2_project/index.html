@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Yash  Goel | blank</title>
+<title>Yash  Goel | learning MPC controller</title>
 <meta name="description" content="Exploring Robotics
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/2_project/">
 
 <!-- Theming-->
 
@@ -139,56 +139,64 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">learning MPC controller</h1>
+    <p class="post-description">Using deep network to learn control for tracking</p>
+  </header>
 
+  <article>
+    <p><em>Robotics Research Centre, IIIT Hyderabad</em></p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2018/12/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+<p>Investigate the use of deep networks for learning control to imitate the performance of MPC controller. The proposed network takes in the future desired states and the current state of the quadrotorto generate high level control commands of yaw rate, pitch, roll and thrust to do positional tracking. All the simulations were done in <code class="language-plaintext highlighter-rouge">ROS</code> using <a href="https://github.com/ethz-asl/rotors_simulator">RotorS</a> simulator.</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/deepmpc.jpg" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    The whole pipeline for imitating control.
+</div>
 
+<h3 id="data-collection">Data Collection</h3>
 
+<p>The expert control commands are generated using <a href="https://github.com/ethz-asl/mav_control_rw">mav_control_rw</a> package. These control commands serve as the ground truth for the imitation learning scheme while the ground truth pose as the input.</p>
+
+<div class="row">
+    <div class="col-sm mt-1 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/mpc_data.gif" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Various trajectories generated on ROS using RotorS simulator. The blue trajectories are the desired trajectories whereas the red ones represent the ground truth trajectories generated from the MPC controller.
+</div>
+
+<h3 id="network">Network</h3>
+
+<p>Various network structures (MLP and recurrent networks) were tested for comparing the results. Though the final output remain the same producing yaw rate, roll, pitch and thrust.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/deep_net.jpg" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Initial MLP network used for learning control
+</div>
+
+<h3 id="results">Results</h3>
+<p>Generated high-level commands from the network are sent to the low-level PID control for controlling the drone.</p>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/deep_res.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+     Performance of the proposed deep network fortracking on unseen <em>sine</em> curve
+</div>
+
+  </article>
 
 </div>
 

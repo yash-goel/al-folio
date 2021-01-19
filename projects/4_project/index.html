@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Yash  Goel | blank</title>
+<title>Yash  Goel | Hydrogen Fuel Cell Vehicle</title>
 <meta name="description" content="Exploring Robotics
 ">
 
@@ -29,7 +29,7 @@
 <link rel="shortcut icon" href="/assets/img/favicon.ico">
 <link rel="stylesheet" href="/assets/css/main.css">
 
-<link rel="canonical" href="/blog/">
+<link rel="canonical" href="/projects/4_project/">
 
 <!-- Theming-->
 
@@ -139,56 +139,65 @@
     <div class="container mt-5">
       <div class="post">
 
-  <div class="header-bar">
-    <h1></h1>
-    <h2></h2>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title">Hydrogen Fuel Cell Vehicle</h1>
+    <p class="post-description">modelling, simulation and control of subsystems</p>
+  </header>
 
+  <article>
+    <p><em>Tata Motors Research Centre Bangalore - Big thanks to <b>Mr. Anand Vasappanavara</b></em></p>
 
-  <ul class="post-list">
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/github-metadata.html">a post with github metadata</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>a quick run down on accessing github metadata.</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2020/09/28/twitter.html">a post with twitter</a></h3>
-        <p class="post-meta">September 28, 2020</p>
-        <p>an example of a blog post with twitter</p>
-      </li>
-    
-      <li>
-        <h3><a class="post-title" href="/2018/12/22/distill.html">a distill-style blog post</a></h3>
-        <p class="post-meta">December 22, 2018</p>
-        <p>an example of a distill-style blog post and main elements</p>
-      </li>
-    
-  </ul>
+<p>The work involved modelling systems, simulating and designing controller
+for various sub-systems of a fuel cell vehicle. This work gave me an overview of the hydrogen fuel cell vehicle and its working in depth. A detailed analysis of all the work done is given <a href="https://drive.google.com/file/d/1XRUzs_zOVsMAxC2frRLH15_kd77dZKQP/view">here</a>.</p>
 
-  
-<nav aria-label="Blog page naviation">
-  <ul class="pagination pagination-lg justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="" tabindex="-1" aria-disabled="">Newer</a>
-    </li>
-    
-      
-        <li class="page-item active"><a class="page-link" href="/blog/index.html" title="blank">1</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/2/index.html" title="blank - page 2">2</a></li>
-      
-        <li class="page-item "><a class="page-link" href="/blog/page/3/index.html" title="blank - page 3">3</a></li>
-      
-    
-    <li class="page-item ">
-      <a class="page-link" href="/blog/page/2/">Older</a>
-    </li>
-  </ul>
-</nav>
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/tata_whole.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    General hydrogen fuel cell vehicle powertrain
+</div>
 
+<h3 id="performance-simulation">Performance Simulation</h3>
+<p>This involved primarily performance simulation of the vehicle to set the parameters and formulate if the vehicle is meeting all the design criteria. Also, the fuel economy of the vehicle was simulated on a drive cycle provided by ARAI to see how much the vehicle will run once all the tanks are filled.</p>
 
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/tata_perform_1.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Performance simulation of vehicle
+</div>
+
+<h3 id="thermal-simulation">Thermal Simulation</h3>
+<p>Thermal simulation for the cell stack was done to predict the temperature of the cell stack and controlling it via <code class="language-plaintext highlighter-rouge">PI</code> controller. The
+PI controller controlled the fan speed to change the rate of convection ultimately causing the change in temperature of the fuel cell. A part of
+hydrogen refuelling station was also simulated.</p>
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/tata_thermal_1.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    PI control of fuel cell stack temperature
+</div>
+
+<h3 id="battery-design">Battery Design</h3>
+<p>To solve the problem of SOC determination, a state space model of the battery was created to calculate the SOC and it incorporated the Extended Kalman Filter for the observer design.</p>
+
+<div class="row text-center">
+    <div class="col-sm mt-3 mt-md-0">
+        <img class="img-fluid rounded z-depth-1" src="/assets/img/tata_bat_1.png" alt="" title="example image" />
+    </div>
+</div>
+<div class="caption">
+    Part of battery model in simulink
+</div>
+
+  </article>
 
 </div>
 
