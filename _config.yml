@@ -8,12 +8,12 @@ middle_name:
 last_name: Goel
 email: s7yagoel@uni-bonn.de
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Exploring Robotics
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
-url:  # should be empty
+url: # should be empty
 baseurl:  # should be empty
 last_updated: false # set to true if you want to display last updated in the footer
 
@@ -65,11 +65,11 @@ google_analytics: UA-XXXXXXXXX # out your google-analytics code
 #permalink: /blog/:year/:title/
 
 # Pagination
-#pagination:
-  #enabled: true
+pagination:
+  enabled: true
 
 # Comments
-#disqus_shortname: al-folio # put your disqus shortname
+disqus_shortname: yash # put your disqus shortname
 
 # -----------------------------------------------------------------------------
 # Collections
@@ -126,8 +126,8 @@ plugins:
 
 scholar:
 
-  last_name: Einstein
-  first_name: [Albert, A.]
+  last_name: Goel
+  first_name: Yash
 
   style: apa
   locale: en

@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-sm-3">
   {% if entry.abbr %}
-    <img class="img-fluid" src="{{ entry.abbr | prepend: '/assets/pubimg/' | relative_url }}">
+    <img class="img-fluid" src="{{ entry.abbr | prepend: '/assets/img/' | relative_url }}">
   {% endif %}
   </div>
 
@@ -58,9 +58,6 @@
         <em>{{entry.journal}}</em>
       {% elsif entry.type == "inproceedings" %}
         <em>In {{entry.booktitle}}</em>
-      {% endif %}
-      {% if entry.year %}
-        {{entry.year}}
       {% endif %}
       </div>
     {% endif %}
